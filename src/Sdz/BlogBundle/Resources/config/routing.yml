@@ -15,8 +15,8 @@ sdzblog_ajouter:
     requirements:
         id: \d+
 sdzblog_ajouter:
-    path:    /suprimer/{id}
-    defaults: { _controller: SdzBlogBundle:Blog:suprimer}
+    path:    /supprimer/{id}
+    defaults: { _controller: SdzBlogBundle:Blog:supprimer}
     requirements:
         id: \d+
 sdzblog_voir_slug:
