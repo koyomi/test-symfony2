@@ -1,4 +1,5 @@
-sdz_blog:
-    resource: "@SdzBlogBundle/Resources/config/routing.yml"
-    prefix:   /blog
+oc_platform:
+    resource: "@OCPlatformBundle/Resources/config/routing.yml"
+    prefix:   /platform
+
 
