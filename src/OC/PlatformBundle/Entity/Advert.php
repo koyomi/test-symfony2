@@ -54,11 +54,14 @@ class Advert{
 	private $published = true;
 
 	/**
-		*ORM\OneToOne(targetEntity="OV\PlatformBundle\Entity\Image", cascade={"persist"})
+		*@ORM\OneToOne(targetEntity="OC\PlatformBundle\Entity\Image", cascade={"persist"})
 	*/
 	private $image;
-
-
+	/**
+		* @ORM\ManyToMany(targetEntity="OC\PlatformBundle\Entity\Category", cascade={"persist"})
+	*/
+	private $categories;
+	
 	public function __construct(){
 		// Par défaut, la date de l'annonce est la date d'aujourd'hui
 		$this->date = new \Datetime();
@@ -189,10 +192,44 @@ class Advert{
     /**
      * set image
      *
-     * @return Image 
+     * @param Image
+     * @return Advert
      */
     public function setImage(Image $image = null)
     {
         return $this->image = $image;
+    }
+
+    /**
+     * Add categories
+     *
+     * @param \OC\PlatformBundle\Entity\Category $categories
+     * @return Advert
+     */
+    public function addCategory(\OC\PlatformBundle\Entity\Category $categories)
+    {
+        $this->categories[] = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param \OC\PlatformBundle\Entity\Category $categories
+     */
+    public function removeCategory(\OC\PlatformBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }
